@@ -9,13 +9,14 @@ __pycache__/
 models/*.pt
 models/*.h5
 models/*.pth
-
+.cache/
 # Environnement virtuel
 .env/
 .venv/
 env/
 venv/
-
+.simple_model/
+.train/
 # Fichiers système
 .DS_Store
 Thumbs.db
