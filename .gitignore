@@ -1,37 +1,6 @@
-# Dossiers de données
-data/processed/
-data/split/
-__pycache__/
-*.py[cod]
-*.ipynb_checkpoints
 
-# Fichiers de modèles
-models/*.pt
-models/*.h5
-models/*.pth
 .cache/
-# Environnement virtuel
-.env/
-.venv/
-env/
-venv/
-.simple_model/
-.train/
-# Fichiers système
-.DS_Store
-Thumbs.db
-
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints/
-
-# Logs, résultats temporaires
-*.log
-*.tmp
 
 # Fichiers de prédictions ou résultats générés
-*.csv
-*.npy
-
-# Configuration personnelle
-.vscode/
-.idea/
+train.py
+simple_model.py
