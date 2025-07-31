@@ -1,6 +1,6 @@
 
 .cache/
+.gitignore
 
-# Fichiers de prédictions ou résultats générés
 train.py
 simple_model.py
