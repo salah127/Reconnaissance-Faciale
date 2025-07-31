@@ -1,6 +1,26 @@
 
+# Cache directories
 .cache/
-.gitignore
+cache/
 
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Model files
+*.h5
+*.keras
+best_model_temp.h5
+
+# Specific files to ignore
 train.py
 simple_model.py
+requirements.txt
+
+# Temporary files
+*.tmp
+temp_test_image.png
+
+# JSON config files
+seuil_user_*.json
