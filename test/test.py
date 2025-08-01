@@ -21,14 +21,14 @@ def charger_modele(chemin_modele="modele_user_0_equilibre.h5"):
     """
     try:
         model = load_model(chemin_modele)
-        print(f"✅ Modèle chargé: {chemin_modele}")
+        print(f" Modèle chargé: {chemin_modele}")
         return model
     except FileNotFoundError:
-        print(f"❌ Modèle non trouvé: {chemin_modele}")
-        print("💡 Assurez-vous d'avoir exécuté guide_complet.py d'abord")
+        print(f" Modèle non trouvé: {chemin_modele}")
+        print(" Assurez-vous d'avoir exécuté guide_complet.py d'abord")
         return None
     except Exception as e:
-        print(f"❌ Erreur lors du chargement: {e}")
+        print(f" Erreur lors du chargement: {e}")
         return None
 
 def charger_seuil_optimal(user_id=0):
@@ -47,15 +47,15 @@ def charger_seuil_optimal(user_id=0):
             seuil_info = json.load(f)
         
         seuil = seuil_info['seuil_optimal']
-        print(f"✅ Seuil optimal chargé: {seuil:.3f}")
+        print(f" Seuil optimal chargé: {seuil:.3f}")
         print(f"   (Basé sur: P0={seuil_info['moyenne_p0']:.3f}, Autres={seuil_info['moyenne_autres']:.3f})")
         return seuil
         
     except FileNotFoundError:
-        print(f"⚠️  Fichier seuil non trouvé, utilisation du seuil par défaut: 0.7")
+        print(f"  Fichier seuil non trouvé, utilisation du seuil par défaut: 0.7")
         return 0.7
     except Exception as e:
-        print(f"⚠️  Erreur chargement seuil: {e}, utilisation du seuil par défaut: 0.7")
+        print(f"  Erreur chargement seuil: {e}, utilisation du seuil par défaut: 0.7")
         return 0.7
 
 def preparer_image(chemin_image):
@@ -123,10 +123,10 @@ def predire_personne(model, image_preparee, seuil=None):  # Seuil automatique pa
     # Niveau de confiance
     if est_utilisateur:
         confiance = probabilite
-        resultat = "✅ C'EST LA PERSONNE 0!"
+        resultat = " C'EST LA PERSONNE 0!"
     else:
         confiance = 1 - probabilite
-        resultat = "❌ CE N'EST PAS LA PERSONNE 0"
+        resultat = " CE N'EST PAS LA PERSONNE 0"
     
     return {
         'probabilite': probabilite,
@@ -147,8 +147,8 @@ def tester_image(chemin_image, afficher=True):
     Returns:
         dict: résultats complets
     """
-    print(f"\n🔍 TEST DE RECONNAISSANCE")
-    print(f"📁 Image: {chemin_image}")
+    print(f"\n TEST DE RECONNAISSANCE")
+    print(f" Image: {chemin_image}")
     print("-" * 50)
     
     # 1. Charger le modèle
@@ -165,9 +165,9 @@ def tester_image(chemin_image, afficher=True):
     resultats = predire_personne(model, image_preparee)
     
     # 4. Afficher les résultats
-    print(f"🎯 {resultats['resultat']}")
-    print(f"📊 Probabilité: {resultats['probabilite']:.3f} ({resultats['probabilite']*100:.1f}%)")
-    print(f"🎪 Confiance: {resultats['confiance']:.3f} ({resultats['confiance']*100:.1f}%)")
+    print(f" {resultats['resultat']}")
+    print(f" Probabilité: {resultats['probabilite']:.3f} ({resultats['probabilite']*100:.1f}%)")
+    print(f" Confiance: {resultats['confiance']:.3f} ({resultats['confiance']*100:.1f}%)")
     
     # 5. Affichage graphique
     if afficher and image_affichage is not None:
@@ -219,7 +219,7 @@ def tester_depuis_dataset(index_image=0):
         data = np.load("data/olivetti_faces.npy")
         
         if index_image >= len(data):
-            print(f"❌ Index trop grand. Max: {len(data)-1}")
+            print(f" Index trop grand. Max: {len(data)-1}")
             return
         
         # Extraire l'image
@@ -232,10 +232,10 @@ def tester_depuis_dataset(index_image=0):
         # Déterminer la vraie personne
         vraie_personne = index_image // 10
         
-        print(f"\n🔍 TEST AVEC IMAGE DU DATASET")
-        print(f"📊 Index: {index_image}")
-        print(f"👤 Vraie personne: {vraie_personne}")
-        print(f"✅ Devrait être: {'PERSONNE 0' if vraie_personne == 0 else 'PAS PERSONNE 0'}")
+        print(f"\n TEST AVEC IMAGE DU DATASET")
+        print(f" Index: {index_image}")
+        print(f" Vraie personne: {vraie_personne}")
+        print(f" Devrait être: {'PERSONNE 0' if vraie_personne == 0 else 'PAS PERSONNE 0'}")
         
         # Tester
         resultats = tester_image(temp_path, afficher=True)
@@ -247,22 +247,22 @@ def tester_depuis_dataset(index_image=0):
         return resultats
         
     except FileNotFoundError:
-        print("❌ Dataset non trouvé: data/olivetti_faces.npy")
+        print(" Dataset non trouvé: data/olivetti_faces.npy")
         return None
 
 def tester_plusieurs_exemples():
     """Teste plusieurs images du dataset pour validation"""
-    print("\n🧪 TESTS DE VALIDATION")
+    print("\n TESTS DE VALIDATION")
     print("=" * 60)
     
     # Tests avec images de la personne 0 (devraient être reconnus)
-    print("\n👤 TESTS AVEC PERSONNE 0 (devraient être reconnus):")
+    print("\n TESTS AVEC PERSONNE 0 (devraient être reconnus):")
     for i in [0, 1, 5, 9]:  # Images de la personne 0
         print(f"\n--- Test image {i} ---")
         tester_depuis_dataset(i)
     
     # Tests avec autres personnes (ne devraient PAS être reconnus)
-    print("\n👥 TESTS AVEC AUTRES PERSONNES (ne devraient PAS être reconnus):")
+    print("\n TESTS AVEC AUTRES PERSONNES (ne devraient PAS être reconnus):")
     for i in [10, 25, 50, 100]:  # Images d'autres personnes
         print(f"\n--- Test image {i} ---")
         tester_depuis_dataset(i)
@@ -270,7 +270,7 @@ def tester_plusieurs_exemples():
 
 def diagnostic_rapide():
     """Diagnostic rapide pour trouver le meilleur seuil"""
-    print("\n🔍 DIAGNOSTIC RAPIDE DU MODÈLE")
+    print("\n DIAGNOSTIC RAPIDE DU MODÈLE")
     print("=" * 50)
     
     try:
@@ -280,10 +280,10 @@ def diagnostic_rapide():
         if model is None:
             return
         
-        print("🧪 Test sur échantillon représentatif...")
+        print(" Test sur échantillon représentatif...")
         
         # Tester personne 0 (images 0-9)
-        print("\n👤 PERSONNE 0:")
+        print("\n PERSONNE 0:")
         predictions_p0 = []
         for i in range(5):  # Tester 5 images de P0
             image = data[i].reshape(1, 64, 64, 1)
@@ -292,7 +292,7 @@ def diagnostic_rapide():
             print(f"   Image {i}: {pred:.3f}")
         
         # Tester autres personnes
-        print(f"\n👥 AUTRES PERSONNES:")
+        print(f"\n AUTRES PERSONNES:")
         predictions_autres = []
         test_indices = [10, 25, 50, 100, 200]  # 5 autres personnes
         for i in test_indices:
@@ -300,13 +300,13 @@ def diagnostic_rapide():
             pred = model.predict(image, verbose=0)[0][0]
             predictions_autres.append(pred)
             pers = i // 10
-            print(f"   Image {i} (pers.{pers}): {pred:.3f}")
+            print(f" Image {i} (pers.{pers}): {pred:.3f}")
         
         # Statistiques
         moyenne_p0 = np.mean(predictions_p0)
         moyenne_autres = np.mean(predictions_autres)
         
-        print(f"\n📊 STATISTIQUES:")
+        print(f"\n STATISTIQUES:")
         print(f"   Moyenne P0: {moyenne_p0:.3f}")
         print(f"   Moyenne autres: {moyenne_autres:.3f}")
         
@@ -323,7 +323,7 @@ def diagnostic_rapide():
         print(f"   Seuil recommandé: {seuil_recommande}")
         
         # Test avec différents seuils
-        print(f"\n🎯 TEST AVEC DIFFÉRENTS SEUILS:")
+        print(f"\n TEST AVEC DIFFÉRENTS SEUILS:")
         seuils_test = [0.5, 0.6, 0.7, 0.8]
         
         for seuil in seuils_test:
@@ -337,21 +337,21 @@ def diagnostic_rapide():
         return seuil_recommande
         
     except Exception as e:
-        print(f"❌ Erreur diagnostic: {e}")
+        print(f" Erreur diagnostic: {e}")
         return 0.7
 
 # === UTILISATION PRINCIPALE ===
 if __name__ == "__main__":
-    print("🎭 RECONNAISSANCE FACIALE - PERSONNE 0")
+    print(" RECONNAISSANCE FACIALE - PERSONNE 0")
     print("=" * 60)
     
     # Vérifier que le modèle existe
     if not os.path.exists("modele_user_0_equilibre.h5"):
-        print("❌ Modèle 'modele_user_0_equilibre.h5' non trouvé!")
-        print("💡 Exécutez d'abord 'guide_complet.py' pour créer le modèle")
+        print(" Modèle 'modele_user_0_equilibre.h5' non trouvé!")
+        print(" Exécutez d'abord 'guide_complet.py' pour créer le modèle")
         exit()
     
-    print("\n📋 OPTIONS DISPONIBLES:")
+    print("\n OPTIONS DISPONIBLES:")
     print("1. Tester une image externe")
     print("2. Tester une image du dataset")
     print("3. Tests de validation automatiques")
@@ -361,17 +361,17 @@ if __name__ == "__main__":
     
     if choix == "1":
         # Test image externe
-        chemin = input("📁 Chemin vers l'image: ").strip()
+        chemin = input(" Chemin vers l'image: ").strip()
         if chemin:
             tester_image(chemin)
         
     elif choix == "2":
         # Test image du dataset
         try:
-            index = int(input("📊 Index de l'image (0-399): "))
+            index = int(input(" Index de l'image (0-399): "))
             tester_depuis_dataset(index)
         except ValueError:
-            print("❌ Veuillez entrer un nombre valide")
+            print(" Veuillez entrer un nombre valide")
             
     elif choix == "3":
         # Tests automatiques
@@ -380,9 +380,9 @@ if __name__ == "__main__":
     elif choix == "4":  # ← NOUVEAU
         # Diagnostic rapide
         seuil_recommande = diagnostic_rapide()
-        print(f"\n💡 CONSEIL: Changez le seuil dans predire_personne() à {seuil_recommande}")
+        print(f"\n CONSEIL: Changez le seuil dans predire_personne() à {seuil_recommande}")
         
     else:
-        print("❌ Choix invalide")
+        print(" Choix invalide")
         
-    print("\n✨ Test terminé!")
+    print("\n Test terminé!")
