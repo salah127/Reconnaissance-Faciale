@@ -1,0 +1,8 @@
+{
+  "seuil_optimal": 0.1,
+  "moyenne_mes_images": 0.9999977350234985,
+  "moyenne_autres": 0.0002495474473107606,
+  "std_mes_images": 6.148703505459707e-06,
+  "std_autres": 0.00012871150102000684,
+  "f1_score": 1.0
+}
