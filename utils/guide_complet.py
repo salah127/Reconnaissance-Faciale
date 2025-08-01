@@ -24,7 +24,7 @@ print(f" Données chargées: {data.shape}")
 print(f"   Range: {data.min():.3f} - {data.max():.3f}")
 
 # === ÉTAPE 2: CRÉER LES TARGETS À PARTIR DES DONNÉES ===
-print("\n🔄 ÉTAPE 2: Création des labels automatiques...")
+print("\n ÉTAPE 2: Création des labels automatiques...")
 
 USER_ID = 0  # Choisir quelle personne reconnaître (0 à 39)
 
