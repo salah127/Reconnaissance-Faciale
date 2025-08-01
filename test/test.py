@@ -92,10 +92,10 @@ def preparer_image(chemin_image):
         return image_preparee, image_array
         
     except FileNotFoundError:
-        print(f"❌ Image non trouvée: {chemin_image}")
+        print(f" Image non trouvée: {chemin_image}")
         return None, None
     except Exception as e:
-        print(f"❌ Erreur lors du traitement de l'image: {e}")
+        print(f" Erreur lors du traitement de l'image: {e}")
         return None, None
 
 def predire_personne(model, image_preparee, seuil=None):  # Seuil automatique par défaut
@@ -357,7 +357,7 @@ if __name__ == "__main__":
     print("3. Tests de validation automatiques")
     print("4. Diagnostic rapide du modèle")  # ← NOUVEAU
     
-    choix = input("\n🔢 Votre choix (1/2/3/4): ").strip()
+    choix = input("\n Votre choix (1/2/3/4): ").strip()
     
     if choix == "1":
         # Test image externe
