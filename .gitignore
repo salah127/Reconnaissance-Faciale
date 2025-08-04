@@ -1,0 +1,34 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv
+venv/
+ENV/
+.ipynb_checkpoints/
+logs*/
+*.log
+*.tmp
+*.bak
+fig_*.png
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Exclure tout le dossier data sauf quelques exemples
+data/*
+test/*
+!data/olivetti_faces.npy
+!data/dgoat_faces_augmented.npy
+!data/test/test11.png
+!data/test/test9.png
+
+# Exclure tous les modèles sauf le principal
+!best_model_user_final.keras
+!modele_user.keras
+*.h5
+*.keras
+*.ckpt
+*.pb
+*.tflite

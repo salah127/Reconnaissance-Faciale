@@ -5,9 +5,8 @@ import json
 
 MODEL_PATH = "best_model_user_final.keras"
 SEUIL_PATH = "seuil_user.json"
-# IMAGE_PATH = "./data/test/test11.png"  
-# IMAGE_PATH = "./data/test/test11.png"  #utilisateur
-IMAGE_PATH = "./data/test/test9.png" #non utilisateur
+IMAGE_PATH = "./data/test/test11.png"  #utilisateur
+# IMAGE_PATH = "./data/test/test9.png" #non utilisateur
 
 # Charger modèle et seuil
 model = tf.keras.models.load_model(MODEL_PATH)

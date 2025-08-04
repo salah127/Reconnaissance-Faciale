@@ -1,8 +1,0 @@
-{
-  "seuil_optimal": 0.5,
-  "moyenne_p0": 0.5000653266906738,
-  "moyenne_autres": 0.4996989071369171,
-  "std_p0": 0.00010764428589027375,
-  "std_autres": 0.00011287839151918888,
-  "precision_avec_seuil": 0.8125
-}

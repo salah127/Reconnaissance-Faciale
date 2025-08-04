@@ -1,7 +1,7 @@
 """
 Système de reconnaissance faciale binaire
 =========================================
-Script principal pour entraîner un modèle qui distingue une personne spécifique des autres.
+Script principal pour entrainer un modèle qui distingue une personne spécifique des autres.
 """
 
 import numpy as np
@@ -174,7 +174,7 @@ print(f"Distribution y_train: {np.bincount(y_train.astype(int))}")
 print(f"Distribution y_val: {np.bincount(y_val.astype(int))}")
 print(f"Distribution y_test: {np.bincount(y_test.astype(int))}")
 
-# Entraînement du modèle
+# Entrainement du modèle
 history = model.fit(
     x_train, y_train,
     validation_data=(x_val, y_val),
