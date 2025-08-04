@@ -7,7 +7,6 @@ Ce projet permet d'entraîner et d'utiliser un modèle de deep learning pour rec
 - `main.py` : script principal d'entraînement et d'évaluation
 - `test_image.py` : script pour tester une image avec le modèle entraîné
 - `requirements.txt` : dépendances Python
-- `modele_user.keras` : modèle entraîné (exemple fourni)
 - `seuil_user.json` : seuil optimal et statistiques du modèle
 - `data/` : dossier contenant les données (exemples fournis)
 - `fig_*.png` : figures générées automatiquement (courbes, matrices, etc.)
